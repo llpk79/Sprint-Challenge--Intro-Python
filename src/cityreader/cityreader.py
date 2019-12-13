@@ -29,9 +29,9 @@ class City:
 def cityreader(cities=[]):
     with open('cities.csv', newline='') as csvfile:
         reader = csv.reader(csvfile)
-        for i, row in enumerate(reader):
-            if i > 0:
-                cities.append(City(row[0], float(row[3]), float(row[4])))
+        next(reader)
+        for row in reader:
+            cities.append(City(row[0], float(row[3]), float(row[4])))
     return cities
 
 
@@ -39,7 +39,6 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    # print(f'"{c.name}", {c.lat},{c.lon}')
     print(c)
 
 # STRETCH GOAL!
@@ -75,6 +74,7 @@ for c in cities:
 # lon1 = float(input('enter first lon'))
 # lat2 = float(input('enter second lat'))
 # lon2 = float(input('enter second lon'))
+
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
